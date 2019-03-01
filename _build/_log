@@ -1,0 +1,24 @@
+### Starting build.
+# Target: expression_tests.ml.depends, tags: { extension:ml, file:expression_tests.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -modules expression_tests.ml > expression_tests.ml.depends
+# Target: expression.mli.depends, tags: { extension:mli, file:expression.mli, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -modules expression.mli > expression.mli.depends # cached
+# Target: expressionLibrary.ml.depends, tags: { extension:ml, file:expressionLibrary.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -modules expressionLibrary.ml > expressionLibrary.ml.depends # cached
+# Target: expressionLibrary.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:expressionLibrary.cmo, file:expressionLibrary.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -o expressionLibrary.cmo expressionLibrary.ml # cached
+# Target: expression.cmi, tags: { byte, compile, extension:mli, file:expression.mli, interf, ocaml, quiet }
+ocamlfind ocamlc -c -o expression.cmi expression.mli # cached
+# Target: test_simple.ml.depends, tags: { extension:ml, file:test_simple.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -modules test_simple.ml > test_simple.ml.depends
+# Target: test_simple.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:test_simple.cmo, file:test_simple.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -o test_simple.cmo test_simple.ml
+# Target: expression_tests.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:expression_tests.cmo, file:expression_tests.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -o expression_tests.cmo expression_tests.ml
+# Target: expression.ml.depends, tags: { extension:ml, file:expression.ml, ocaml, ocamldep, quiet }
+ocamlfind ocamldep -modules expression.ml > expression.ml.depends # cached
+# Target: expression.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:expression.cmo, file:expression.ml, implem, ocaml, quiet }
+ocamlfind ocamlc -c -o expression.cmo expression.ml # cached
+# Target: expression_tests.byte, tags: { byte, dont_link_with, extension:byte, file:expression_tests.byte, link, ocaml, program, quiet }
+ocamlfind ocamlc -linkpkg expressionLibrary.cmo expression.cmo test_simple.cmo expression_tests.cmo -o expression_tests.byte
+# Compilation successful.
